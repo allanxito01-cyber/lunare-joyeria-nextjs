@@ -10,29 +10,39 @@ const supabase = createBrowserClient(
 
 export default function DashboardPage() {
     const [user, setUser] = useState<any>(null)
+    const [perfil, setPerfil] = useState<any>(null)
     const router = useRouter()
 
     useEffect(() => {
-        // Función para obtener el usuario que inició sesión
-        async function getUser() {
+        async function getData() {
+            // 1. Verificamos quién inició sesión
             const { data: { session } } = await supabase.auth.getSession()
             
             if (!session) {
-                // Si alguien intenta entrar sin iniciar sesión, lo pateamos al login
                 router.push('/login')
-            } else {
-                setUser(session.user)
+                return
+            }
+            setUser(session.user)
+
+            // 2. Buscamos su nombre y rol en la tabla profiles
+            const { data: perfilData } = await supabase
+                .from('profiles')
+                .select('full_name, role')
+                .eq('id', session.user.id)
+                .single()
+            
+            if (perfilData) {
+                setPerfil(perfilData)
             }
         }
-        getUser()
+        getData()
     }, [router])
 
     async function handleSignOut() {
         await supabase.auth.signOut()
-        router.push('/') // Te regresa a la página principal del catálogo
+        router.push('/')
     }
 
-    // Pantalla de carga mientras lee la base de datos
     if (!user) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -44,17 +54,34 @@ export default function DashboardPage() {
     return (
         <main className="max-w-4xl mx-auto px-6 py-10">
             <div className="bg-slate-800 rounded-2xl p-8 shadow-xl border border-slate-700">
-                <h1 className="text-3xl font-bold text-white mb-2">
-                    Panel de Administración
-                </h1>
-                <p className="text-slate-400 mb-8">
-                    Bienvenido a la gestión interna de Lunare JOYERÍA.
-                </p>
+                <div className="flex justify-between items-start mb-8">
+                    <div>
+                        <h1 className="text-3xl font-bold text-white mb-2">
+                            ¡Hola, {perfil ? perfil.full_name : 'Usuario'}!
+                        </h1>
+                        <p className="text-slate-400">
+                            Bienvenido a la gestión interna de Lunare JOYERÍA.
+                        </p>
+                    </div>
+                    {/* Etiqueta visual para el rol */}
+                    {perfil && (
+                        <span className={`px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                            perfil.role === 'admin' 
+                            ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50' 
+                            : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50'
+                        }`}>
+                            {perfil.role === 'admin' ? 'Administrador' : 'Cliente'}
+                        </span>
+                    )}
+                </div>
                 
                 <div className="bg-slate-900 rounded-lg p-6 mb-8 border border-slate-700">
                     <h2 className="text-lg font-semibold text-white mb-2">Tus datos de acceso:</h2>
-                    <p className="text-slate-300">
+                    <p className="text-slate-300 mb-1">
                         <span className="font-bold">Correo:</span> {user.email}
+                    </p>
+                    <p className="text-slate-300">
+                        <span className="font-bold">Rol en el sistema:</span> {perfil ? perfil.role : 'Cargando...'}
                     </p>
                 </div>
 
