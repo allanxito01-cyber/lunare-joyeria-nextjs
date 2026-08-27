@@ -3,6 +3,7 @@
 import { useState } from "react";
 import JoyaCard from "@/components/JoyaCard";
 import SearchBar from "@/components/SearchBar";
+import ApiExterna from "@/components/ApiExterna";
 
 // Datos de prueba con el inventario real del catálogo
 const joyas = [
@@ -44,6 +45,7 @@ export default function Home() {
         <main className="max-w-4xl mx-auto px-6 py-10">
             <h1 className="text-3xl font-bold text-white mb-8">
                 Catálogo Lunare JOYERÍA
+                <ApiExterna/>
             </h1>
             
             {/* Buscador interactivo */}
