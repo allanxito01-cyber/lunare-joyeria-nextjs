@@ -40,4 +40,4 @@ Para revisión académica, utilizar las siguientes credenciales:
 
 ## Autor
 Allan Steeven Garcia Soledispa
-ENLACE: https://ister-my.sharepoint.com/:v:/g/personal/allan_garcia_ister_edu_ec/IQBRDjSeTqJPQozcAMHFojSrAcSysrpO4Jua0YAysgpn2tM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VlVpeX https://github.com/allanxito01-cyber/lunare-joyeria-nextjs 
+ENLACE VIDEO: https://ister-my.sharepoint.com/:v:/g/personal/allan_garcia_ister_edu_ec/IQBRDjSeTqJPQozcAMHFojSrAcSysrpO4Jua0YAysgpn2tM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VlVpeX https://github.com/allanxito01-cyber/lunare-joyeria-nextjs 
